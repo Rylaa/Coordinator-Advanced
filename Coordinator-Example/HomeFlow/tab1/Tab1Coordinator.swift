@@ -20,10 +20,7 @@ final class Tab1Coordinator: Coordinator, MenuOptionPresenter {
     }
     
     
-    init(_ navigationController: UINavigationController, _ setHideNavBar: Bool) {
-        self.navigationController = navigationController
-        self.navigationController = UINavigationController(rootViewController: <#T##UIViewController#>)
-    }
+
     
     init(_ viewController: UIViewController, _ setHideNavBar: Bool) {
         viewController.tabBarItem = UITabBarItem(title: "Contacts", image: UIImage(named: "closeMenu"), selectedImage: nil)

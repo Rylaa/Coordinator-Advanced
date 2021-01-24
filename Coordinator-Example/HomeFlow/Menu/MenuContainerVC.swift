@@ -6,6 +6,7 @@
 //
 
 import UIKit
+
 class MenuContainerVC: UIViewController {
     
     let transition = SlideInTransition()
@@ -15,6 +16,11 @@ class MenuContainerVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMenuBarButton()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func setupMenuBarButton() {

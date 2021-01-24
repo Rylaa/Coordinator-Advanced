@@ -43,13 +43,11 @@ extension AppDelegate: AppSetupProtocol {
 
     internal func setupCoordinator() {
         window = UIWindow()
+        window = UIWindow(frame: UIScreen.main.bounds)
         let navigation = UINavigationController()
-        let frame = UIScreen.main.bounds
-        window = UIWindow(frame: frame)
         window!.rootViewController = navigation
         window!.makeKeyAndVisible()
         mainCoordinator = MainCoordinator(navigation, false)
-        mainCoordinator?.window = window
     }
     
     internal func startWithDeeplink(_ deeplinkType: [AnyHashable : Any]) {

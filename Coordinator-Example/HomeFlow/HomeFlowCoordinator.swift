@@ -18,9 +18,9 @@ final class HomeFlowCoordinator: Coordinator {
     var state: CoordinatorType { .tab }
         
  
-    init(_ tabbarController: UITabBarController) {
-        navigationController = UINavigationController()
-        self.tabbarController = tabbarController
+    init(_ navigationController: UINavigationController, _ setHideNavBar: Bool) {
+        self.navigationController = navigationController
+        tabbarController = navigationController.topViewController as? UITabBarController
         
         let tab1Coordinator = Tab1Coordinator(Tab1VC.instantiate(), false)
         let tab2Coordinator = Tab2Coordinator(Tab2VC.instantiate(), false)
@@ -33,8 +33,10 @@ final class HomeFlowCoordinator: Coordinator {
     }
     
     func start() {
-        childrenCoordinators.forEach { (Coordinator) in
-            Coordinator.start()
+        tabbarController.selectedIndex = 0
+        childrenCoordinators.forEach { (coordinator) in
+            coordinator.finihFlowDelegate = self
+            coordinator.start()
         }
     
     }

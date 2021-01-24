@@ -17,8 +17,6 @@ protocol Coordinator: Router, AnyObject {
    
     
     init(_ navigationController: UINavigationController, _ setHideNavBar: Bool)
-    init(_ viewController: UIViewController, _ setHideNavBar: Bool)
-    init(_ tabbarController: UITabBarController, _ setHideNavBar: Bool)
     
     func start()
     func start(with option: DeepLinkOption?)
@@ -32,6 +30,12 @@ protocol CoordinatorDidFnish: AnyObject {
 
 enum CoordinatorType {
     case app, login, tab, menu
+    case customFinish(CoordinatorFinishType)
+}
+
+enum CoordinatorFinishType {
+    case finishAllFlow
+    case finishPageFlow
 }
 
 
@@ -45,17 +49,12 @@ extension Coordinator {
         finihFlowDelegate?.didFinish(coordinator: self)
     }
     
-    init(_ viewController: UIViewController, _ setHideNavBar: Bool) {
-        self.init(viewController, setHideNavBar)
-    }
+ 
     
     init(_ navigationController: UINavigationController, _ setHideNavBar: Bool) {
         self.init(navigationController, setHideNavBar)
     }
-    
-    init(_ tabbarController: UITabBarController, _ setHideNavBar: Bool) {
-        self.init(tabbarController, setHideNavBar)
-    }
+
     
 }
 

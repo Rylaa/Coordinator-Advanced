@@ -53,6 +53,6 @@ extension MenuOptionPresenter where Self: Coordinator {
         vc.didFinish = { [weak self] in
             self?.navigationController.dismiss(animated: true, completion: nil)
         }
-        navigationController.present(UINavigationController(rootViewController: vc), animated: true)
+        navigationController.pushViewController(vc, animated: true)
     }
 }

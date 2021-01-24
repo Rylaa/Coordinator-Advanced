@@ -43,10 +43,8 @@ extension MainCoordinator {
 // Child Coordinator
 extension MainCoordinator {
     func showHomeFlow() {
-        let tabbarController = UITabBarController()
-        window?.rootViewController = tabbarController
-        window?.makeKeyAndVisible()
-        let sideMenuCoordinator = HomeFlowCoordinator(tabbarController)
+        navigationController.setViewControllers([UITabBarController()], animated: false)
+        let sideMenuCoordinator = HomeFlowCoordinator(navigationController, false)
         sideMenuCoordinator.finihFlowDelegate = self
         sideMenuCoordinator.start()
         childrenCoordinators.append(sideMenuCoordinator)

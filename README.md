@@ -1,4 +1,4 @@
-# Coordinator-Advanced
+# Coordinator Advanced
 
 This repo is an example Coordinator.
 
